@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>S-Selector Demo</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<style>
+		/* CSS for s-multi-selector */
+        .full-scr-bg {width: 100%;height: 100%;background-color: rgba(0,0,0,0.5);position:fixed;top: 0;left: 0;display: none;}
+        .selector-con {width: 260px;height: 100%;background-color: #FFF;position: fixed;right: -260px;}
+        .selection {font-size: 16px;padding: 10px;border-bottom: #DDD solid 1px;}
+        .selector-title {border-bottom: #DDD solid 1px;margin: 0 0 50px;}
+        .selector-title span{line-height: 50px;font-size: 18px;}
+        .sel-back {display: inline-block;width: 50px;text-align: center;}
+	</style>
+</head>
+<body>
+<div class="selector-con" id="wtsd0" data-value="441602" style="right: 0px;">
+	<div class="selector-title"><span class="sel-back">&lt;</span><span class="sel-title-text">河源市</span></div>
+	<div class="selection-con">
+		<div class="selection" data-value="441625">东源县</div>
+		<div class="selection" data-value="441624">和平县</div>
+		<div class="selection" data-value="441622">龙川县</div>
+		<div class="selection" data-value="441623">连平县</div>
+		<div class="selection" data-value="441602">源城区</div>
+		<div class="selection" data-value="441621">紫金县</div>
+	</div>
+</div>
+<div class="selector-con" id="wtsd1" data-value="441602004" style="right: 0px;">
+	<div class="selector-title"><span class="sel-back">&lt;</span><span class="sel-title-text">源城区</span></div>
+	<div class="selection-con">
+		<div class="selection" data-value="441602003">东埔街道</div>
+		<div class="selection" data-value="441602400">高埔岗街道</div>
+		<div class="selection" data-value="441602101">埔前镇</div>
+		<div class="selection" data-value="441602001">上城街道</div>
+		<div class="selection" data-value="441602002">新江街道</div>
+		<div class="selection" data-value="441602004">源西街道</div>
+		<div class="selection" data-value="441602100">源南镇</div>
+	</div>
+</div>
+<div class="selector-con" id="wtsd2">
+	<div class="selector-title"><span class="sel-back">&lt;</span><span class="sel-title-text">源西街道</span></div>
+	<div class="selection-con">
+		<div class="selection" data-value="441602004004">白岭头村</div>
+		<div class="selection" data-value="441602004008">光明社区</div>
+		<div class="selection" data-value="441602004003">黄子洞村</div>
+		<div class="selection" data-value="441602004012">江源社区</div>
+		<div class="selection" data-value="441602004013">康乐路南社区</div>
+		<div class="selection" data-value="441602004014">康乐路北社区</div>
+		<div class="selection" data-value="441602004002">新塘村</div>
+		<div class="selection" data-value="441602004005">新江一路社区</div>
+		<div class="selection" data-value="441602004006">新江二路社区</div>
+		<div class="selection" data-value="441602004007">新江三路社区</div>
+		<div class="selection" data-value="441602004010">新港路南社区</div>
+		<div class="selection" data-value="441602004011">新港路北社区</div>
+		<div class="selection" data-value="441602004001">庄田村</div>
+		<div class="selection" data-value="441602004009">站前社区</div>
+	</div>
+</div>
+</body>
+<script>
+	function showSel() {
+		$(".full-scr-bg").fadeIn();
+		$(".selector-con").animate({right: "0"});
+		$(".full-scr-bg").click(function() {
+			$(".full-scr-bg").fadeOut();
+		$(".selector-con").animate({right: "-260px"});
+		})
+	}
+</script>
+
+
+success return
+{"code":"HYSZ305201701310026175","name":"上世纪","phone":"15521030470","topic":"是DVD JDBC"}
+
+

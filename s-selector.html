@@ -16,6 +16,18 @@
 		.sselection-con {position:absolute;height: 90%;width: 100%;bottom: 0;padding: 80px 0;overflow: auto;box-sizing: border-box;}
         .sselection {font-size: 16px;padding: 10px;border-bottom: #DDD solid 1px;}
 		/* CSS for slide selector END*/
+		/*Animated by CSS3*/
+		@keyframes sselector-right-in {
+			from {right: -260px;}
+			to {right: 0px;}
+		}
+		.sselector-show {
+			right: 0px;
+			animation-name: sselector-right-in;
+			animation-duration: 0.5s;
+		}
+		
+		/*Animated by CSS3*/
 	</style>
 </head>
 <body>
@@ -28,12 +40,16 @@
 		<p>1. Link CSS, there is in the source code with the comment of "CSS for slide selector". You can edit for your need.</p>
 		<p>2. Add a div with class named "slideSelectorCon" in body. </p>
 		<p>3. Add slideSelector function, see the code in source code of this page. This function used to render the slide selector UI and controll the click event(callback).</p>
-		<button id="idTypeSel">Demo</button><span id="selectValue"></span>
+		<button id="idTypeSel">Demo</button><button id="idTypeSelC">Demo (Animated by CSS3)</button><span id="selectValue"></span>
 	</div>
 	<script>
 	$("#idTypeSel").click(function() {
 		var idTypeList = [{value:"1",name:"身份证"},{value:"2",name:"军官证"},{value:"3",name:"士兵证"},{value:"4",name:"警官证"},{value:"5",name:"港澳台居民身份证"},{value:"6",name:"护照"},{value:"7",name:"户口簿"},{value:"8",name:"其他证件"}];
 		slideSelector("请选择证件类型", idTypeList, "name", "value", clickCallback);
+	})
+	$("#idTypeSelC").click(function() {
+		var idTypeList = [{value:"1",name:"身份证"},{value:"2",name:"军官证"},{value:"3",name:"士兵证"},{value:"4",name:"警官证"},{value:"5",name:"港澳台居民身份证"},{value:"6",name:"护照"},{value:"7",name:"户口簿"},{value:"8",name:"其他证件"}];
+		slideSelectorC("请选择证件类型", idTypeList, "name", "value", clickCallback);
 	})
 	
 	function clickCallback(para) {
@@ -64,6 +80,36 @@
 			$(".slideSelectorCon").unbind( "click" );
 		});
 		$(".sselector-con").animate({right: 0});
+		$(".sselection").click(function() {
+			var itemTxt = $(this).text();
+			var value = $(this).attr("data-value");
+			var rtObj = {name: itemTxt, value:value}
+			callback(rtObj);
+			$(".sselector-con").animate({left: 0});
+			$(".slideSelectorCon").hide();
+		})
+	}
+	
+	function slideSelectorC(title, listArr, nameKey, valueKey, callback) {
+		if( typeof(title) != "string" || title == "") {
+			var title = "请选择";
+		}
+		var htmlStr = "";
+		htmlStr += "<div class=\"sselector-con\" data-value=\"\"><div class=\"sselector-title\"><span class=\"ssel-back\">&lt;</span><span class=\"ssel-title-text\">" + title + "</span></div><div class=\"sselection-con\">";
+		for(var i=0; i < listArr.length; i++) {
+			htmlStr += "<div class=\"sselection\" data-value=\"" + listArr[i][valueKey] +"\">" + listArr[i][nameKey] + "</div>";
+		}
+		htmlStr += "</div></div>";
+		console.log(htmlStr);
+		$(".slideSelectorCon").empty();
+		$(".slideSelectorCon").append(htmlStr);
+		$(".slideSelectorCon").show();
+		$(".slideSelectorCon").click(function() {
+			$(".slideSelectorCon").empty();
+			$(".slideSelectorCon").hide();
+			$(".slideSelectorCon").unbind( "click" );
+		});
+		$(".sselector-con").addClass("sselector-show");
 		$(".sselection").click(function() {
 			var itemTxt = $(this).text();
 			var value = $(this).attr("data-value");

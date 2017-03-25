@@ -40,19 +40,21 @@
 <script>
 function showNotice(c, t) {
 	var ntdiv = document.createElement("div");
+	var showTime = t || 3000;
 	ntts = new Date().getTime();
 	ntdiv.className = "snotic"
 	ntdiv.id = "snotic" + ntts;
 	ntdiv.innerHTML = c;
 	document.body.appendChild(ntdiv);
 	var setTimeoutCode = "document.body.removeChild(document.getElementById('snotic"+ntts+"'))";
-	setTimeout(setTimeoutCode, t);
+	setTimeout(setTimeoutCode, showTime);
 }
 </script>
 </html>
 <!--
 UPDATE LOG
 2016-10-07 21:53:52 以“snotic”+timestamp为ID，避免多个通知冲突。
+2017-03-25 12:17:17 设置默认显示时间为3秒。
 -->
 <!--
 USAGE
